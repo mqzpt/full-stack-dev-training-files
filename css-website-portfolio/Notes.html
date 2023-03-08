@@ -1,0 +1,497 @@
+!DOCTYPE <html>
+    
+<!-- 
+To reference external CSS, we use @import or we can use <link>
+
+In HTML5 this looks like:
+<link rel="stylesheet" href="css/styles.css"
+
+SASS files are little files complied into one big CSS file?
+
+Internal CSS (more flexible than inline)
+Best use for short block to only apply to one page:
+-->
+
+    <head>
+        <style>
+            h1 {
+                color:green;
+            }
+            hs {
+                color:blue;
+            }
+        </style>
+    </head>
+
+
+    <body>
+
+        <!-- Inline CSS (use sparingly, hard to manage)
+            Addiitonaly, Inline overrides CSS files: -->
+
+        <h1 style="color:green;">Heading</h1>
+        <p style="color:red;font-size:12px;background:#000000;">Paragraph</p>
+        <p style="text-transform:uppercase;color:blue;">Another Paragraph</p>
+    </body>
+</html>
+
+<!-- {Declaration Blocks} contain a selector (ex. img), declarations are the style rules, while properties are the different types of rules that can be set.  -->
+
+<!-- CSS comments are written as   /* message */   -->
+
+<!-- CSS Values and Units -->
+
+<!--
+    Absolute <length> -> Fixed unit, same size
+    Relative <length> -> Dependant upon values declared in parent and ancestor elements
+        Example: em, rem, vw, rh
+    Unitless Values do not require a unit, or could be words.
+    CSS has functions as well.
+-->
+
+<!-- The color property: red, blue, green, black, and more
+
+    Checkout colors.neilorangepeel.com for a list of CSS colors, or just use RGB
+
+    rgb(r,g,b)
+    rbga(r,g,b,opacity from 0 to 1)
+    hsl(hue(degrees),s(saturation),l(lightness)) 
+    hsla(h,s,l,opacity from 0 to 1)
+
+    Other resources:
+
+    css-tricks.com (color explorer)
+    randoma11y.com
+    coolors.co/app
+
+-->
+
+<!-- Type and universal selectors 
+
+    Type selectors are a basic kind of selector with a simple matching pattern:
+
+    h1 {...} <-- Matches to all h1 elements
+
+    * {...} <--- Mataches to all elements (universal)
+
+-->
+
+<!-- When these are too general, use class and ID selectors
+
+    HTML:
+
+    <p class="fancy">Fancy Paragraph.</p>
+    <p>Regular Paragraph</p>
+
+    CSS:
+
+    .fancy {
+        font-style: italic;
+    }
+
+-->
+
+<!-- ID's are added as an attribute to HTML
+
+<div id="container">
+    <p>Paragraph in a header</p>
+</div>
+
+#container {
+    text-align: center;
+}
+
+ID's can also be used for in-page linking
+
+Naming conventions:
+
+Use underscore or dash, meaningful names
+Use easily understood abbreviations
+
+-->
+
+<!--
+
+HTML:
+    <h1 class="example">Heading</h1>
+    <h2 class="example example2">Sub-heading</h2>
+    <p>Paragraph with text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dignissimos quisquam sequi, est eligendi reiciendis?</p>
+    <h2>Sub-heading</h2>
+    <p>Another paragraph with text. Nulla qui aperiam, cumque labore, repudiandae quae accusantium quos possimus illo, odit numquam, eveniet doloremque!</p>
+
+CSS:
+    * {
+  color: green;
+    }
+
+    h1 {
+    color: blue;
+    }
+
+    h2 {
+    color: pink;
+    }
+
+    .example {
+    color: orange;
+    }
+
+    .example2 {
+    background: black;
+    }
+
+    .example.example2 {
+    font-size: 50px;
+    }
+
+-->
+<!-- Desecendant Selectors:
+
+    section p a {...}
+
+    ex. <p>There's a <a href="#">link</a> inside this paragraph.</p>
+
+-->
+
+<!--
+
+You can group different types of selectors into the same list:
+
+ex. h1, h2, .class, #id {...}
+
+Group correctly,
+
+ex. <section h1, section h2 {..}
+
+to combine selectors, (or combine and within a selector)
+
+.fancy.intro{...}
+<p class="fancy intro">Fancy intro paragraph</p>
+
+
+// Applies to any element within this class:
+
+.intro {
+    color: blue;
+}
+
+// Applies to a <p> element within the class:
+
+p.intro {
+    font-size: 15px;
+}
+
+<p class="intro">Intro Paragraph</p>
+
+INHERITANCE
+
+Tags within will inherit, for example if you apply a color to the body tag, all tags within body inherit the style.
+
+1. universal (*)
+2. type (p)
+3. class (.example)
+4. id (#example)
+
+!important comes before the semicolon and overrides specificity
+
+-->
+<!-- PSEUDO CLASS SELECTORS
+
+    HTML:
+
+    <a>no href</a>
+    <a href="#">:link</a>
+    <a href="#">:visited</a>
+    <a href="#">:hover</a>
+    <a href="#">:active</a>
+    <a href="##">:focus</a>
+
+    CSS:
+
+    body {
+        font-size: 20px;
+    }
+    a {
+        color: red;
+    }
+    a:link {
+        color: green;
+    }
+    a:visited {
+        color: gray;
+    }
+    a:focus {
+        outline: 1px solid black;
+    }
+    a:hover {
+        background: gray;
+    }
+    a:active {
+        color: white;
+    }
+-->
+
+<!-- BOX MODEL SYNTAX -->
+
+<!-- 
+    // BLOCK ELEMENT
+
+    div  {
+        width: 100px;
+        height: 100px;
+        width: 100px;
+        height: 100px;
+    }
+
+    // INLINE ELEMENT
+
+    span {
+        width: 100px;
+        height: 100px;
+        display: block;
+            // OR
+        display: inline-block;
+    }
+
+    padding-top,right,bottom,left;
+
+    // Shorthand for padding is:
+
+    padding: 2px 2px 2px 2px; where elements are (top right bottom left)
+
+    padding shorthand is:
+    (1 val - same on all sides)
+    (2 val - top & bottom, left & right)
+    (3 val - top, right & left, bottom)
+
+    you can also mix different types of unit lengths:
+
+    padding: 10px, 2%; (top & bottom, right and left)
+
+    Margin adds/removes space around the element
+
+    margin is same as padding in terms of syntax, but can also use keyword auto and negative values
+
+    Border displays border between margin and padding.
+
+    // SHORTHAND
+
+    border: 2px solid red;
+
+    // LONGHAND
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: red;
+
+    border-width can also accept thin, medium, thick
+    border-style can also accept none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset
+
+    Steal fonts from google fonts and paste HTML code in.
+
+    //
+    longhand vs shorthand:
+
+    font: italic small-caps bold 24px/1.5 Helvectia, sans-serif;
+
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1.5;
+    font-family: Helvectia, sans-serif;
+
+    must include values for font-size and font-family, but may include values for font-style, font-variant, font-weight, line-height
+
+    order matters, font-style, font-variant, and font-weight must precede font-size
+
+    font-variant = normal or small-caps only
+
+    font-size/line-height
+
+    font-family must be the last value specified
+    //
+
+    text-decoration: (line, color, style) ex. underline red solid;
+    text-align
+    line-height
+
+    OVERFLOW
+
+    overflow: hidden;
+    overflow: auto; (scroll bar for overflowing content)
+    overflow: scroll; (always scroll bar)
+
+    CLEARFIX HACK
+
+    <div class="clearfix">
+        <p>floated element</p>
+        <p>floated element</p>
+    </div>
+
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    Display property
+
+    <div class="parent">
+        <div>floated element</div>
+        <div>floated element</div>
+    </div>
+
+    .parent {
+        display: flow-root;
+    }
+
+    POSITION:
+
+    static: not positioned
+    relative: relative to current position
+    absolute: relative to containing element
+    fixed: relative to the viewport
+    sticky: relative to containing element and viewport
+
+    FLEXBOX:
+
+    <div class="container">
+        <div>flex item</div>
+        <div>flex item</div>
+        <div>flex item</div>
+        <div>flex item</div>
+    </div>
+
+    .cointainer {
+        display: flex;
+        // OR
+        display: inline-flex;
+    }
+
+    Flex direction:
+
+    :row (ltr -> main start main end ltr)
+    :column (, column: reverse changes alignment and same with row)
+    flex-wrap: nowrap (default property, they wont wrap)
+    flex-wrap: Items will wrap
+    flex-wrap: wrap-reverse >
+                            > > >
+    // flex-flow shorthand //
+
+    flex-flow: column wrap;
+
+    // flex-flow longhand //
+
+    flex-direction: column;
+    flex-wrap: wrap
+
+    flex-basis: sets the intial size of the flex-items
+
+    flex-grow: determines how item will expand if there is extra space in the container
+
+    flex-shrink: determines how items will shrink if there isn't enough space in the container
+
+    // flex shorthand //
+
+    flex: grow shrink basis;
+    flex: 0, 1, 100px;
+
+    // FLEXBOX ALIGNMENT
+
+    justify-content aligns items on the main axis 
+    align-items aligns items on the cross axis
+
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // GRID
+
+    grid container - the parent element
+    grid items - the child elements within the grid container
+
+    .grid-container {
+        display: grid;
+
+        // OR
+
+        display: inline-grid;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 100px 100px 100px // 3 columns
+        grid-template-rows: 100px 100px // 2 rows
+    }
+
+    Grid layout has (fr) which is the fraction unit. split the grind into fr number of equal parts, but 2fr is 2 times larger than 1fr
+
+    ex:
+
+    grid-template-columns: 1fr 1fr 1fr;
+    same as:
+    grid-template-columns: repeat(3, 1fr);
+
+    use auto for implicit rows
+
+    ex. grid-template-columns: 50px repeat(2, 1fr);
+
+    gap: 10px; // rows and columns
+    gap: 10px 20px; // rows | columns
+
+    SELECTORS: (adv.)
+
+    parent > child {} -> must be direct child
+    
+    h1 + p {} -> Adjacent sibling combinators -> right comes direcly after left
+
+    <section>
+        <p>Sibling to heading.</p>
+        <h1>Heading</h1>
+        <p>Sibling to heading</p> // ADJACENT SIBLING // GENERAL SIBLING
+        <p>Sibling to heading</p> // GENERAL SIBLING
+    </section>
+
+    The tilde ( h1 ~ p {}) will connect to any sibling element after selector on the left
+
+    :first-child
+    :last-child
+    :first-of-type
+    :last-of-type
+
+    .background {
+    max-width: 600px;
+    padding: 100px;
+    background-color: lightblue;
+    background-image: url(https://unsplash.it/550/150?image=703);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: cover;
+}
+
+    MEDIA QUERIES
+
+    @media screen and (max-width: 1000px) {
+        h1 {
+            font-size: 16px;
+        }
+    }
+
+    all: macthes to all devices
+    print: matches to printers and print related displays
+    speech: macthes to screenreaders
+    screen: matches all devices that aren't print or speech
+
+    @media(feature_name, value) and (feature_name, value)
+
+    not and only are also operators
+
+    Breakpoints = device switch?
+
+    320px, 480px, 600px, 768px
+-->
+    
+    
